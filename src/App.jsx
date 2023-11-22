@@ -6,6 +6,8 @@ import DB from "./players.js"
 
 import './App.css'
 
+export const PlayerInfo = createContext(null)
+
 function App() {
   
   const [clubPlayers, setClubPlayers] = useState([])
@@ -25,19 +27,23 @@ function App() {
     console.log(selectedPlayers)
   }, [selectedPlayers])
 
-  function addPlayers(name, position) {
-    setSelectedPlayers([...selectedPlayers, {name, position}])
+  function addPlayers(id, name, position) {
+    setSelectedPlayers([...selectedPlayers, {id, name, position}])
+  }
+
+  function removePlayer(id){
+    setSelectedPlayers(selectedPlayers.filter(player => player.id != id))
   }
 
   return (
 
     isLoading ? <div>Loading...</div> : 
 
-     <> 
+     <PlayerInfo.Provider value={{DB, addPlayers, removePlayer}}> 
      <Header />
-      <Main clubPlayers={clubPlayers} selectedPlayers={selectedPlayers} addPlayers={addPlayers}/>
+      <Main />
       <Footer />
-     </>
+     </PlayerInfo.Provider>
      
     
   )
