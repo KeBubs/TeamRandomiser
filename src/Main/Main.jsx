@@ -10,9 +10,11 @@ export default function Main() {
   // Get the selected players from the context
   const {selectedPlayers} = useContext(PlayerInfo)
   // Create function which takes in the number entered in the search field, and splits selected players into teams.
+  const teams = []
+
   function generateTeams(number) {
       // For loop to create 'x' amount of  teams
-      const teams = []
+      
       let index = 0
 
       for (let i = 0; i < number; i++){
@@ -60,24 +62,37 @@ export default function Main() {
 
     // If state shows the button has been clicked, then call the function to generate teams
   console.log(teams)
+  setButtonClicked(true)
 }
   const [inputValue, setInputValue] = useState(0)
   function handleInputChange(e) {
     setInputValue(e.target.value)
   }
-
   return (
+    
+  buttonClicked ? 
+  
+  <>
+  <div className="Players">
+    <button type="reset">Reset</button>
+    <CreatedTeams createdTeams={teams}/>
+  </div>
+  </> 
+  
+  : 
+
     <>
     <input onChange={handleInputChange} type="number" min="2" max="4"></input><button onClick={() => generateTeams(inputValue)}>Generate Teams</button>
-    
+
     <div className="Players">
       {DB.map(({id, name, position}, i) => (
         <Player id={id} name={name} position={position} key={i} />
       ) )}
     </div>
     </>
-    
   )
+    
+    
 }
 
 function Player ({id, name, position, i}) {
@@ -105,3 +120,15 @@ function updateStyle(id, name, position) {
   )
 }
 
+function CreatedTeams({createdTeams: teams}) {
+  console.log('Im here' + teams)
+  return (
+    <>
+    {teams.map((team, i) => (
+      <div className="Team" key={i}>
+        <p>{team}</p>
+          </div>
+        ))}
+    </>
+  )
+}
