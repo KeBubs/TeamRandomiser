@@ -1,17 +1,74 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PlayerInfo } from '../App.jsx'
 
 
 export default function Main() {
 
-  
   const {DB} = useContext(PlayerInfo)
+  // Set state to check whether the button has been clicked
+  const [buttonClicked, setButtonClicked] = useState(false)
+  // Get the selected players from the context
+  const {selectedPlayers} = useContext(PlayerInfo)
+  // Create function which takes in the number entered in the search field, and splits selected players into teams.
+  function generateTeams(number) {
+      // For loop to create 'x' amount of  teams
+      const teams = []
+      let index = 0
 
-  
+      for (let i = 0; i < number; i++){
+        teams.push([])
+      }
+      
+      // For loop to iterate over the selected players array
+      selectedPlayers.forEach((player) => {
+        if (player.position == 'Goalkeeper') {
+          teams[index].push(player)
+          if (index == (number - 1)){
+          index = 0
+        } else {
+          index += 1
+        }
+      }})
+      selectedPlayers.forEach((player) => {
+        if (player.position == 'Defence') {
+          teams[index].push(player)
+          if (index == (number - 1)){
+            index = 0
+        } else {
+          index += 1
+        }
+      }})
+      selectedPlayers.forEach((player) => {
+        if (player.position == 'Midfield') {
+          teams[index].push(player)
+          if (index == (number - 1)){
+            index = 0
+        } else {
+          index += 1
+        }
+      }})
+      selectedPlayers.forEach((player) => {
+        if (player.position == 'Striker') {
+          teams[index].push(player)
+          if (index == (number - 1)){
+            index = 0
+        } else {
+          index += 1
+        }
+      }})
+        // Firstly iterate and seperate the goalkeepers between the teams
+
+    // If state shows the button has been clicked, then call the function to generate teams
+  console.log(teams)
+}
+  const [inputValue, setInputValue] = useState(0)
+  function handleInputChange(e) {
+    setInputValue(e.target.value)
+  }
 
   return (
     <>
-    <p>All Players</p>
+    <input onChange={handleInputChange} type="number" min="2" max="4"></input><button onClick={() => generateTeams(inputValue)}>Generate Teams</button>
     
     <div className="Players">
       {DB.map(({id, name, position}, i) => (

@@ -50,7 +50,7 @@ const ClubPlayers = [
   {
     id: 9,
     name: "Elliott Wragg",
-    position: "Defender",
+    position: "Defence",
     influence: "0",
   },
   {
@@ -128,7 +128,7 @@ const ClubPlayers = [
   {
     id: 22,
     name: "Ethan Jay Dickinson",
-    position: "Defender",
+    position: "Defence",
     influence: "0",
   },
   {
@@ -176,7 +176,7 @@ const ClubPlayers = [
   {
     id: 30,
     name: "Cameron Jones",
-    position: "Defender",
+    position: "Defence",
     influence: "0",
   },
   {

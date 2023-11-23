@@ -39,7 +39,7 @@ function App() {
 
     isLoading ? <div>Loading...</div> : 
 
-     <PlayerInfo.Provider value={{DB, addPlayers, removePlayer}}> 
+     <PlayerInfo.Provider value={{DB, addPlayers, removePlayer, selectedPlayers}}> 
      <Header />
       <Main />
       <Footer />
