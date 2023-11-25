@@ -10,7 +10,7 @@ export default function Main() {
   // Get the selected players from the context
   const {selectedPlayers} = useContext(PlayerInfo)
   // Create function which takes in the number entered in the search field, and splits selected players into teams.
-  const teams = []
+  const [teams, setTeams] = useState([])
 
   function generateTeams(number) {
       // For loop to create 'x' amount of  teams
@@ -18,7 +18,7 @@ export default function Main() {
       let index = 0
 
       for (let i = 0; i < number; i++){
-        teams.push([])
+        setTeams(teams => [...teams, []])
       }
       
       // For loop to iterate over the selected players array
@@ -69,37 +69,47 @@ export default function Main() {
     setInputValue(e.target.value)
   }
   return (
-    
-  buttonClicked ? 
-  
-  <>
-  <div className="Players">
-    <button type="reset">Reset</button>
-    <CreatedTeams createdTeams={teams}/>
-  </div>
-  </> 
-  
-  : 
-
     <>
-    <input onChange={handleInputChange} type="number" min="2" max="4"></input><button onClick={() => generateTeams(inputValue)}>Generate Teams</button>
+      {buttonClicked ? (
+        <>
+        <p>Do I render?</p>
+        // Render CreatedTeams component when buttonClicked is true
+        <CreatedTeams teams={teams} />
+        </>
+      ) : (
+        <>
+          <input
+            onChange={handleInputChange}
+            type="number"
+            min="2"
+            max="6"
+          ></input>
+          <button onClick={() => generateTeams(inputValue)}>
+            Generate Teams
+          </button>
 
-    <div className="Players">
-      {DB.map(({id, name, position}, i) => (
-        <Player id={id} name={name} position={position} key={i} />
-      ) )}
-    </div>
+          <div className="Players">
+            {DB.map(({ id, name, position }, i) => (
+              <Player
+                id={id}
+                name={name}
+                position={position}
+                key={i}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </>
-  )
-    
-    
+  );
 }
-
+// Player Component which takes in the player name and position as props
 function Player ({id, name, position, i}) {
   const [playerStyle, setPlayerStyle] = useState('white')
   const {addPlayers} = useContext(PlayerInfo)
   const {removePlayer} = useContext(PlayerInfo)
 
+// Function to update the style of the player div when clicked
 function updateStyle(id, name, position) {
     
     if (playerStyle == 'white') {
@@ -120,15 +130,27 @@ function updateStyle(id, name, position) {
   )
 }
 
-function CreatedTeams({createdTeams: teams}) {
-  console.log('Im here' + teams)
+function CreatedTeams({teams}) {
+  console.log(teams)
   return (
     <>
-    {teams.map((team, i) => (
-      <div className="Team" key={i}>
-        <p>{team}</p>
-          </div>
+    {teams.map((team) => (
+      <div>
+        {team.map((player) => (
+        <SelectedPlayer id={player.id} name={player.name} position={player.position} />
         ))}
+      </div>
+      
+    ))}
     </>
+  )
+}
+
+function SelectedPlayer ({ id, name, position }) {
+  return (
+    <div className="Player" key={id}>
+      <p>{name}</p>
+      <p>{position}</p>
+    </div>
   )
 }
