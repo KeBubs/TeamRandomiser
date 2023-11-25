@@ -75,8 +75,7 @@ export default function Main() {
     <>
       {buttonClicked ? (
         <>
-        <p>Do I render?</p>
-        // Render CreatedTeams component when buttonClicked is true
+        {/* Title here for the teams that have been created? */}
         <CreatedTeams teams={teamState} />
         </>
       ) : (
