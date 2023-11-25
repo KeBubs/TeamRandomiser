@@ -10,7 +10,8 @@ export default function Main() {
   // Get the selected players from the context
   const {selectedPlayers} = useContext(PlayerInfo)
   // Create function which takes in the number entered in the search field, and splits selected players into teams.
-  const [teams, setTeams] = useState([])
+  const teams = []
+  const [teamState, setTeamState] = useState([])
 
   function generateTeams(number) {
       // For loop to create 'x' amount of  teams
@@ -18,7 +19,7 @@ export default function Main() {
       let index = 0
 
       for (let i = 0; i < number; i++){
-        setTeams(teams => [...teams, []])
+        teams.push([])
       }
       
       // For loop to iterate over the selected players array
@@ -61,8 +62,10 @@ export default function Main() {
         // Firstly iterate and seperate the goalkeepers between the teams
 
     // If state shows the button has been clicked, then call the function to generate teams
-  console.log(teams)
+  
+  setTeamState(teams)
   setButtonClicked(true)
+  console.log(teams)
 }
   const [inputValue, setInputValue] = useState(0)
   function handleInputChange(e) {
@@ -74,7 +77,7 @@ export default function Main() {
         <>
         <p>Do I render?</p>
         // Render CreatedTeams component when buttonClicked is true
-        <CreatedTeams teams={teams} />
+        <CreatedTeams teams={teamState} />
         </>
       ) : (
         <>
@@ -134,12 +137,18 @@ function CreatedTeams({teams}) {
   console.log(teams)
   return (
     <>
-    {teams.map((team) => (
-      <div>
+    
+    {teams.map((team, i) => (
+      <>
+      <p>Team {i + 1}</p>
+      <div className="Players">
+        
         {team.map((player) => (
-        <SelectedPlayer id={player.id} name={player.name} position={player.position} />
+          <SelectedPlayer id={player.id} name={player.name} position={player.position} />
+        
         ))}
       </div>
+      </>
       
     ))}
     </>
