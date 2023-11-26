@@ -1,3 +1,11 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.search-field {
+    width: 10%;
+}
+
 .Players {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -17,4 +25,17 @@
     gap: 1rem;
     justify-content: center;
     text-align: center;
+}
+
+.footer-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    color: #000000;
+    font-size: 3vw;
+    font-weight: bold;
+    padding: 1rem;
 }

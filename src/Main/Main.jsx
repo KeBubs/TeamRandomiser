@@ -80,7 +80,8 @@ export default function Main() {
         </>
       ) : (
         <>
-          <input
+        <div>
+          <input className="search-field"
             onChange={handleInputChange}
             type="number"
             min="2"
@@ -89,6 +90,9 @@ export default function Main() {
           <button onClick={() => generateTeams(inputValue)}>
             Generate Teams
           </button>
+          <p>Players Selected: {selectedPlayers.length}</p>
+        </div>
+          
 
           <div className="Players">
             {DB.map(({ id, name, position }, i) => (
