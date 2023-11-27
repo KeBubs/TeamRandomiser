@@ -1,8 +1,30 @@
 body {
     font-family: 'Raleway', sans-serif;
-    display: flex
     max-width: 100%;
     overflow-x: hidden;
+}
+
+.loaded-teams {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resetBtn {
+    background-color: #959497;
+    border: none;
+    border-radius: 10px;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    box-shadow: 2px 2px #000000;
+
 }
 
 @media screen and (max-width: 844px) {

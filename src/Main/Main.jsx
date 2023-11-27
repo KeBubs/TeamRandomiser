@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react"
-import { PlayerInfo } from '../App.jsx'
+import { PlayerInfo } from "../../Contexts/index.js"
+import { Player } from "./Player.jsx"
 
 
 export default function Main() {
 
-  const {DB} = useContext(PlayerInfo)
+  const {clubPlayers} = useContext(PlayerInfo)
   // Set state to check whether the button has been clicked
   const [buttonClicked, setButtonClicked] = useState(false)
   // Get the selected players from the context
@@ -65,7 +66,6 @@ export default function Main() {
   
   setTeamState(teams)
   setButtonClicked(true)
-  console.log(teams)
 }
   const [inputValue, setInputValue] = useState(0)
   function handleInputChange(e) {
@@ -74,10 +74,10 @@ export default function Main() {
   return (
     <>
       {buttonClicked ? (
-        <>
-        {/* Title here for the teams that have been created? */}
+        <div className="loaded-teams">
+        <button className="resetBtn" type='reset' value='Start again...' onClick={() => window.location.reload()}>Start Again...</button>
         <CreatedTeams teams={teamState} />
-        </>
+        </div>
       ) : (
         <>
         <div className="navBar">
@@ -101,11 +101,12 @@ export default function Main() {
           
 
           <div className="Players">
-            {DB.map(({ id, name, position }, i) => (
+            {clubPlayers.map((player, i) => (
               <Player
-                id={id}
-                name={name}
-                position={position}
+                
+                id={player.id}
+                name={player.name}
+                position={player.position}
                 key={i}
               />
             ))}
@@ -116,34 +117,9 @@ export default function Main() {
   );
 }
 // Player Component which takes in the player name and position as props
-function Player ({id, name, position, i}) {
-  const [playerStyle, setPlayerStyle] = useState('white')
-  const {addPlayers} = useContext(PlayerInfo)
-  const {removePlayer} = useContext(PlayerInfo)
 
-// Function to update the style of the player div when clicked
-function updateStyle(id, name, position) {
-    
-    if (playerStyle == 'white') {
-      addPlayers(id, name, position)
-      setPlayerStyle('#00693E')
-    } else {
-      setPlayerStyle('white')
-      removePlayer(id)
-    }
-  }
-
-  return (
-    <div className="Player" style={{ background: playerStyle}} onClick={() => updateStyle(id, name, position)} key={i} id={id}>
-        <p>{name}</p>
-        <p>{position}</p>
-        </div>
-
-  )
-}
 
 function CreatedTeams({teams}) {
-  console.log(teams)
   return (
     <>
     
