@@ -87,7 +87,6 @@ export default function Main() {
         <div className="navBar">
           <label>How many teams?</label>
             <fieldset onChange={(e) => {
-            e.preventDefault();
             handleInputChange(e);
           }} className="radioBtns teams">
             <label>2<input type='radio' name="teams" value='2'></input></label>
