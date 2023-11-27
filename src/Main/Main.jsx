@@ -13,10 +13,17 @@ export default function Main() {
   // Create function which takes in the number entered in the search field, and splits selected players into teams.
   const teams = []
   const [teamState, setTeamState] = useState([])
+  const [inputValue, setInputValue] = useState(0)
+  
+  // Change the inputvalue state to the value of the radio button
+  function handleInputChange(e) {
+    setInputValue(e.target.value)
+    console.log(e.target.value)
+  }
 
   function generateTeams() {
       // For loop to create 'x' amount of  teams
-      let selectValue = document.querySelector('select').value
+      let selectValue = inputValue
       let index = 0
 
       for (let i = 0; i < selectValue; i++){
@@ -67,35 +74,32 @@ export default function Main() {
   setTeamState(teams)
   setButtonClicked(true)
 }
-  const [inputValue, setInputValue] = useState(0)
-  function handleInputChange(e) {
-    setInputValue(e.target.value)
-  }
+  
   return (
     <>
       {buttonClicked ? (
         <div className="loaded-teams">
-        <button className="resetBtn" type='reset' value='Start again...' onClick={() => window.location.reload()}>Start Again...</button>
+        <button className="Btn" type='reset' value='Start again...' onClick={() => window.location.reload()}>Start Again...</button>
         <CreatedTeams teams={teamState} />
         </div>
       ) : (
         <>
         <div className="navBar">
-          {/* <input className="search-field"
-            onChange={handleInputChange}
-            type="number"
-            min="2"
-            max="6"
-          ></input> */}
           <label>How many teams?</label>
-          <select>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          <button onClick={() => generateTeams(inputValue)}>
+            <fieldset onChange={(e) => {
+            e.preventDefault();
+            handleInputChange(e);
+          }} className="radioBtns teams">
+            <label>2<input type='radio' name="teams" value='2'></input></label>
+          <label>3<input type='radio' name="teams" value='3' ></input></label>
+          <label>4<input type='radio' name="teams" value='4' ></input></label>
+          <button className="Btn" type='submit' onClick={() => generateTeams(inputValue)} >
             Generate Teams
           </button>
+          </fieldset>
+          
+          
+          
           <p>Players Selected: {selectedPlayers.length}</p>
         </div>
           
@@ -126,10 +130,10 @@ function CreatedTeams({teams}) {
     {teams.map((team, i) => (
       <>
       <p>Team {i + 1}</p>
-      <div className="Players">
+      <div className="Players" key={i}>
         
-        {team.map((player) => (
-          <SelectedPlayer id={player.id} name={player.name} position={player.position} />
+        {team.map((player, i) => (
+          <SelectedPlayer id={player.id} name={player.name} position={player.position} key={i} />
         
         ))}
       </div>
