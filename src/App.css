@@ -1,9 +1,21 @@
 body {
-  
+  background-color: #14746f;
 }
 
-.logo {
-  height: 100px;
-  width: 100px;
-  align-items~: center;
+.logo-container {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    color: #000000;
+    font-size: 1vw;
+    font-weight: bold;
+    padding-bottom: .5rem;
+}
+
+.logo-container > img {
+  width: 10%;
+  height: 10%;
 }

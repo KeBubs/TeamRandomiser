@@ -37,7 +37,7 @@ function App() {
 
   return (
 
-    isLoading ? <div>Loading...</div> : 
+    isLoading ? <div className="loading-screen"><p>loading...</p></div> : 
 
      <PlayerInfo.Provider value={{DB, addPlayers, removePlayer, selectedPlayers}}> 
      <Header />

@@ -13,12 +13,12 @@ export default function Main() {
   const teams = []
   const [teamState, setTeamState] = useState([])
 
-  function generateTeams(number) {
+  function generateTeams() {
       // For loop to create 'x' amount of  teams
-      
+      let selectValue = document.querySelector('select').value
       let index = 0
 
-      for (let i = 0; i < number; i++){
+      for (let i = 0; i < selectValue; i++){
         teams.push([])
       }
       
@@ -26,7 +26,7 @@ export default function Main() {
       selectedPlayers.forEach((player) => {
         if (player.position == 'Goalkeeper') {
           teams[index].push(player)
-          if (index == (number - 1)){
+          if (index == (selectValue - 1)){
           index = 0
         } else {
           index += 1
@@ -35,7 +35,7 @@ export default function Main() {
       selectedPlayers.forEach((player) => {
         if (player.position == 'Defence') {
           teams[index].push(player)
-          if (index == (number - 1)){
+          if (index == (selectValue - 1)){
             index = 0
         } else {
           index += 1
@@ -44,7 +44,7 @@ export default function Main() {
       selectedPlayers.forEach((player) => {
         if (player.position == 'Midfield') {
           teams[index].push(player)
-          if (index == (number - 1)){
+          if (index == (selectValue - 1)){
             index = 0
         } else {
           index += 1
@@ -53,7 +53,7 @@ export default function Main() {
       selectedPlayers.forEach((player) => {
         if (player.position == 'Striker') {
           teams[index].push(player)
-          if (index == (number - 1)){
+          if (index == (selectValue - 1)){
             index = 0
         } else {
           index += 1
@@ -80,13 +80,19 @@ export default function Main() {
         </>
       ) : (
         <>
-        <div>
-          <input className="search-field"
+        <div className="navBar">
+          {/* <input className="search-field"
             onChange={handleInputChange}
             type="number"
             min="2"
             max="6"
-          ></input>
+          ></input> */}
+          <label>How many teams?</label>
+          <select>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
           <button onClick={() => generateTeams(inputValue)}>
             Generate Teams
           </button>
@@ -120,7 +126,7 @@ function updateStyle(id, name, position) {
     
     if (playerStyle == 'white') {
       addPlayers(id, name, position)
-      setPlayerStyle('yellow')
+      setPlayerStyle('#00693E')
     } else {
       setPlayerStyle('white')
       removePlayer(id)

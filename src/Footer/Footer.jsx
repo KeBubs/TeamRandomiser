@@ -1,4 +1,4 @@
-import SheldonAthletic from '../assets/SheldonAthletic.jpg'
+import SheldonAthletic from '../assets/SheldonAthletic.png'
 
 export default function Footer (){
     return (

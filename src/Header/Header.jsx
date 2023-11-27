@@ -1,11 +1,10 @@
-import SheldonAthletic from '../assets/SheldonAthletic.jpg'
+import SheldonAthletic from '../assets/SheldonAthletic.png'
 
 export default function Header () {
     return (
-        <>
-        <img className="logo" src={SheldonAthletic}></img>
-        <h1>Sheldon Athletic Random Team Generator</h1>
-        </>
+        <div className="logo-container">
+        <img  src={SheldonAthletic}></img>
+        </div>
         
     )
 }
