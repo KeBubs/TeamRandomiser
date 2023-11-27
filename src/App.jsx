@@ -4,6 +4,8 @@ import Main from './Main/Main.jsx'
 import Footer from './Footer/Footer.jsx'
 import DB from "./players.js"
 import { PlayerInfo } from '../Contexts/index.js'
+import Loading from './Main/loading.jsx'
+import './Main/loading.scss'
 import './App.css'
 
 
@@ -19,7 +21,7 @@ function App() {
     setTimeout(() => {
      setClubPlayers(DB)
      setIsLoading(false)
-    }, 500)
+    }, 2000)
     
   }, [])
 
@@ -37,7 +39,7 @@ function App() {
 
   return (
 
-    isLoading ? <div className="loading-screen"><p>loading...</p></div> : 
+    isLoading ? <Loading/> : 
 
      <PlayerInfo.Provider value={{clubPlayers, addPlayers, removePlayer, selectedPlayers}}> 
      <Header />
