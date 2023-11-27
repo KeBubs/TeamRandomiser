@@ -4,8 +4,7 @@ import Main from './Main/Main.jsx'
 import Footer from './Footer/Footer.jsx'
 import DB from "./players.js"
 import { PlayerInfo } from '../Contexts/index.js'
-import Loading from './Main/loading.jsx'
-import './Main/loading.scss'
+import { Loading } from './Main/loading.jsx'
 import './App.css'
 
 

@@ -1,4 +1,6 @@
-export default function Loading () {
+import './loading.scss'
+
+export function Loading () {
     return (
       <>
       <div className="loading-container">
