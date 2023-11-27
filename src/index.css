@@ -1,5 +1,8 @@
 body {
     font-family: 'Raleway', sans-serif;
+    display: flex
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 @media screen and (max-width: 844px) {
