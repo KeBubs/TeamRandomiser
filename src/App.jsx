@@ -3,10 +3,10 @@ import Header from './Header/Header.jsx'
 import Main from './Main/Main.jsx'
 import Footer from './Footer/Footer.jsx'
 import DB from "./players.js"
-
+import { PlayerInfo } from '../Contexts/index.js'
 import './App.css'
 
-export const PlayerInfo = createContext(null)
+
 
 function App() {
   
@@ -39,7 +39,7 @@ function App() {
 
     isLoading ? <div className="loading-screen"><p>loading...</p></div> : 
 
-     <PlayerInfo.Provider value={{DB, addPlayers, removePlayer, selectedPlayers}}> 
+     <PlayerInfo.Provider value={{clubPlayers, addPlayers, removePlayer, selectedPlayers}}> 
      <Header />
       <Main />
       <Footer />
