@@ -117,24 +117,24 @@ export default function Main() {
 }
 // Player Component which takes in the player name and position as props
 function Player ({id, name, position, i}) {
-  const [playerStyle, setPlayerStyle] = useState('white')
+  const [playerStyle, setPlayerStyle] = useState({background: 'white', fontWeight: 'normal'})
   const {addPlayers} = useContext(PlayerInfo)
   const {removePlayer} = useContext(PlayerInfo)
 
 // Function to update the style of the player div when clicked
 function updateStyle(id, name, position) {
     
-    if (playerStyle == 'white') {
+    if (playerStyle == {background: 'white', fontWeight: 'normal'}) {
       addPlayers(id, name, position)
-      setPlayerStyle('#00693E')
+      setPlayerStyle({ background: '#00693E', fontWeight: 'bold' });
     } else {
-      setPlayerStyle('white')
+      setPlayerStyle({background: 'white', fontWeight: 'normal'})
       removePlayer(id)
     }
   }
 
   return (
-    <div className="Player" style={{ background: playerStyle}} onClick={() => updateStyle(id, name, position)} key={i} id={id}>
+    <div className="Player" style={playerStyle} onClick={() => updateStyle(id, name, position)} key={i} id={id}>
         <p>{name}</p>
         <p>{position}</p>
         </div>
