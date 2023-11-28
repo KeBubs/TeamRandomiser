@@ -177,13 +177,13 @@ const ClubPlayers = [
   {
     id: 30,
     name: "Jack Allen",
-    position: "Defender",
+    position: "Defence",
     influence: "0",
   },
   {
     id: 31,
     name: "Ethan Doyle",
-    position: "Defender",
+    position: "Defence",
     influence: "0",
   },
   {
