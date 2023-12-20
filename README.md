@@ -1,14 +1,17 @@
-# React + Vite
+** Random Team Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I developed this Web App to help my 11 a-side football team pick fair teams for training sessions mid-week.
 
-Currently, two official plugins are available:
+Problem:
+We would have an abundance of players turn up for training. It's difficult to pick 2, 3 or 4 teams which have an evenly distributed amount of Goalkeepers, Defenders, Midifielders and Strikers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Solution:
+I've built an online app which holds all of the player data as well as their positions.
+By clicking on the player, you 'select' them for training. Select all of the players and choose how many teams you require at the top.
+Once 'Generate Teams' is clicked, there will be the Selected Amount of teams created with evenly distributed players.
 
+Long Term Goals:
+- I'm looking to a very minor amount of 'web scraping' into my app. Where when the App loads, it will scrape the WebPage where the registered players are located and then store that locally. Therefore the app will evolve itself as players leave and join the club.
+- Add the ability to include 'one off players'. Where players arent neccessarily registered to the club, but are turning up to training.
 
-To Do's!
-
-Issue seems to be occurring in Main.js file, line 21. 
-I think i need to create a 'state' to store the selected teams in, rather than creating the temporary Arrays inside of 'teams'
+You can visit my App here: https://safc-team-randomiser.vercel.app
