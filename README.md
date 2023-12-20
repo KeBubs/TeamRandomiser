@@ -11,7 +11,7 @@ By clicking on the player, you 'select' them for training. Select all of the pla
 Once 'Generate Teams' is clicked, there will be the Selected Amount of teams created with evenly distributed players.
 
 Long Term Goals:
-- I'm looking to a very minor amount of 'web scraping' into my app. Where when the App loads, it will scrape the WebPage where the registered players are located and then store that locally. Therefore the app will evolve itself as players leave and join the club.
+- I'm looking to use a very minor amount of 'web scraping' into my app. Where when the App loads, it will scrape the WebPage where the registered players are located and then store that locally. Therefore the app will evolve itself as players leave and join the club.
 - Add the ability to include 'one off players'. Where players arent neccessarily registered to the club, but are turning up to training.
 
 You can visit my App here: https://safc-team-randomiser.vercel.app
